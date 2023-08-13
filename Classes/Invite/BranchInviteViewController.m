@@ -312,13 +312,16 @@ static inline void BNCPerformBlockOnMainThreadAsync(void(^block)(void)) {
             }
             else {
                 NSString *failureMessage = [provider loadFailureMessage];
-                [[[UIAlertView alloc]
-                    initWithTitle:@"Failed to load contacts"
-                    message:failureMessage
-                    delegate:nil
-                    cancelButtonTitle:@"OK"
-                    otherButtonTitles:nil]
-                        show];
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Failed to load contacts"
+                                                                                         message:failureMessage
+                                                                                  preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:nil];
+                
+                [alertController addAction:okAction];
+                [self presentViewController:alertController animated:YES completion:nil];
             }
         });
     }];
