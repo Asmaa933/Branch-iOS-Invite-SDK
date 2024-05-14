@@ -85,9 +85,17 @@ static inline void BNCPerformBlockOnMainThreadAsync(void(^block)(void)) {
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donePressed)];
+    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                     target:self
+                                                                                     action:@selector(cancelPressed)];
+    cancelButton.tintColor = [UIColor blueColor];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                     target:self
+                                                                                     action:@selector(cancelPressed)];
+    cancelButton.tintColor = [UIColor blueColor];
+    self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 - (void)configureContactProviders {
