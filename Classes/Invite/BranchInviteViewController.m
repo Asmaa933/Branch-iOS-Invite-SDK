@@ -85,16 +85,16 @@ static inline void BNCPerformBlockOnMainThreadAsync(void(^block)(void)) {
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.tintColor = [UIColor systemBlueColor];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                      target:self
                                                                                      action:@selector(cancelPressed)];
-    cancelButton.tintColor = [UIColor blueColor];
+    cancelButton.tintColor = [UIColor systemBlueColor];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                     target:self
-                                                                                     action:@selector(cancelPressed)];
-    cancelButton.tintColor = [UIColor blueColor];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self
+                                                                                action:@selector(donePressed)];;
+    doneButton.tintColor = [UIColor systemBlueColor];
     self.navigationItem.rightBarButtonItem = doneButton;
 }
 
