@@ -69,6 +69,8 @@ static inline void BNCPerformBlockOnMainThreadAsync(void(^block)(void)) {
         self.inviteItemColor = [self.delegate inviteItemColor];
     }
     
+    self.view.backgroundColor = UIColor.systemBackgroundColor;
+    
     [self configureNavigationItems];
     [self configureContactProviders];
     [self configureSegmentedControl];
@@ -143,6 +145,7 @@ static inline void BNCPerformBlockOnMainThreadAsync(void(^block)(void)) {
 
 - (void)configureContactTable {
     self.contactTable.allowsMultipleSelection = YES;
+    self.contactTable.backgroundColor = UIColor.clearColor;
     
     // Optionally allow for row height specification
     CGFloat rowHeightForContactRows = 0;
